@@ -1,0 +1,70 @@
+/* =============================================================
+   secciones.css — Ritmo vertical y variantes de fondo.
+   ============================================================= */
+.seccion { padding-block: var(--e-8); } /* Aire arriba y abajo de cada sección */
+
+/* Variante con fondo de superficie (horarios) */
+.seccion--superficie { background: var(--c-superficie); }
+
+/* Variante oscura (primer día gratis) */
+.seccion--banda {
+  background: var(--c-banda);
+  color: var(--c-banda-texto);
+}
+
+/* Cabecera de sección: título a la izquierda, intro a la derecha en escritorio */
+.seccion__cabeza {
+  display: grid;
+  gap: var(--e-4);
+  margin-bottom: var(--e-6);
+}
+@media (min-width: 52rem) {
+  .seccion__cabeza { grid-template-columns: 1fr minmax(0, 26rem); align-items: end; }
+}
+
+.seccion__titulo { font-size: var(--t-2xl); }
+
+.seccion__intro {
+  max-width: var(--ancho-texto);
+  color: var(--c-tinta-suave);
+  font-size: var(--t-md);
+  line-height: 1.5;
+}
+/* Intro dentro de la banda oscura */
+.seccion--banda .seccion__intro { color: var(--c-banda-suave); }
+
+/* --- Hero --- */
+.hero { padding-top: var(--e-6); overflow: hidden; } /* overflow: los discos entran desde fuera */
+
+/* Escritorio: titular a la izquierda, texto y botones abajo a la derecha (la barra entra en la primera pantalla) */
+@media (min-width: 64rem) {
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    grid-template-areas: "estado ." "titulo texto";
+    column-gap: var(--e-7);
+    align-items: end;
+  }
+  /* Prefijo .hero__grid: gana a las reglas base definidas más abajo */
+  .hero__grid .estado { grid-area: estado; justify-self: start; }
+  .hero__grid .hero__titulo { grid-area: titulo; margin-bottom: 0; max-width: 13ch; font-size: clamp(4rem, 7.6vw, 7.5rem); } /* 3 líneas */
+  .hero__grid .hero__texto { grid-area: texto; }
+}
+.hero__titulo {
+  font-size: var(--t-hero);
+  font-weight: 900;
+  line-height: 0.86;            /* Bloque compacto, estilo rótulo */
+  max-width: 11ch;              /* Fuerza 2–3 líneas contundentes */
+  margin-block: var(--e-4) var(--e-5);
+}
+.hero__bajada {
+  max-width: 36rem;
+  font-size: var(--t-md);
+  line-height: 1.5;
+  color: var(--c-tinta-suave);
+}
+.hero__acciones {
+  display: flex; flex-wrap: wrap;
+  gap: var(--e-3);
+  margin-top: var(--e-5);
+}

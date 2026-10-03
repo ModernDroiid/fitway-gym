@@ -1,0 +1,34 @@
+/* =============================================================
+   faq.css — Preguntas frecuentes (acordeón nativo).
+   ============================================================= */
+.faq { margin-top: var(--e-6); border-top: 2px solid var(--c-tinta); }
+
+.faq__item { border-bottom: 1px solid var(--c-linea); }
+
+.faq__pregunta {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: var(--e-4);
+  padding-block: var(--e-5);
+  font-weight: 700;
+  font-size: var(--t-md);
+  cursor: pointer;
+  list-style: none;                       /* Quita el triángulo nativo */
+}
+.faq__pregunta::-webkit-details-marker { display: none; } /* Safari */
+
+/* Ícono + que gira a × al abrir */
+.faq__pregunta::after {
+  content: "+";
+  flex: none;
+  font-family: var(--f-display);
+  font-size: 2rem;
+  line-height: 1;
+  transition: transform var(--dur) var(--curva);
+}
+.faq__item[open] .faq__pregunta::after { transform: rotate(45deg); }
+
+.faq__respuesta {
+  max-width: var(--ancho-texto);
+  padding-bottom: var(--e-5);
+  color: var(--c-tinta-suave);
+}

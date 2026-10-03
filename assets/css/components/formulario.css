@@ -1,0 +1,63 @@
+/* =============================================================
+   formulario.css — Formulario de día gratis y confirmación.
+   ============================================================= */
+
+/* Panel claro sobre la banda oscura */
+.form, .confirmacion {
+  background: var(--c-superficie);
+  color: var(--c-tinta);
+  border-radius: var(--radio-m);
+  padding: clamp(var(--e-5), 4vw, var(--e-6));
+  display: grid;
+  gap: var(--e-4);
+}
+.form__titulo, .confirmacion__titulo { font-size: var(--t-lg); }
+
+/* --- Campo --- */
+.campo { display: grid; gap: var(--e-1); }
+.campo__etiqueta { font-weight: 600; font-size: var(--t-sm); }
+.campo__control {
+  min-height: 48px;
+  padding: 0 var(--e-3);
+  border: 1.5px solid var(--c-linea);
+  border-radius: var(--radio-s);
+  background: var(--c-fondo);
+  font-size: 1rem;                         /* 16px: evita zoom automático en iOS */
+  transition: border-color var(--dur);
+}
+.campo__control:hover { border-color: var(--c-tinta-suave); }
+.campo__control:focus-visible { border-color: var(--c-foco); outline-offset: 1px; }
+/* Campo con error (aria-invalid lo pone JS) */
+.campo__control[aria-invalid="true"] { border-color: var(--c-error); }
+
+.campo__ayuda { font-size: var(--t-xs); color: var(--c-tinta-suave); }
+.campo__error { font-size: var(--t-xs); font-weight: 600; color: var(--c-error); }
+.campo__error:empty { display: none; }    /* Sin espacio si no hay error */
+
+/* --- Casillas de autorización --- */
+.campo--casilla {
+  grid-template-columns: auto 1fr;               /* Casilla | texto */
+  column-gap: var(--e-3);
+  align-items: start;
+  font-size: var(--t-sm);
+}
+.campo--casilla .campo__error { grid-column: 2; } /* Error alineado con el texto */
+.campo__casilla {
+  width: 1.375rem; height: 1.375rem;             /* Fácil de tocar */
+  margin-top: 1px;
+  accent-color: var(--c-accion);                 /* Color de marca al marcar */
+}
+.campo__casilla[aria-invalid="true"] { outline: 2px solid var(--c-error); outline-offset: 2px; }
+.campo--casilla a { font-weight: 600; text-underline-offset: 3px; }
+
+/* Aviso de privacidad corto */
+.form__aviso { font-size: var(--t-xs); color: var(--c-tinta-suave); line-height: 1.5; }
+
+/* Estado del envío (error de red, etc.) */
+.form__estado { font-size: var(--t-sm); font-weight: 600; color: var(--c-error); }
+.form__estado:empty { display: none; }
+
+/* --- Confirmación --- */
+.confirmacion { border-top: 6px solid var(--c-ok); }
+.confirmacion:focus { outline: none; }    /* Recibe foco por JS, sin anillo */
+.confirmacion strong { font-weight: 700; }

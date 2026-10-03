@@ -1,0 +1,90 @@
+/* =============================================================
+   barra.css — Barra olímpica del hero.
+   Los discos (uno por sede) entran deslizando y "encajan" al cargar.
+   ============================================================= */
+.barra {
+  position: relative;
+  height: clamp(170px, 26vw, 300px);     /* Alto fluido según pantalla */
+  margin-top: var(--e-5);
+  --alto-disco: clamp(150px, 23vw, 270px); /* Alto del disco más grande */
+}
+
+/* Eje: cilindro metálico con brillo */
+.barra__eje {
+  position: absolute; left: -2%; right: -2%;
+  top: 50%; transform: translateY(-50%);
+  height: clamp(8px, 1vw, 14px);
+  background: linear-gradient(to bottom, #d9dde1, var(--c-acero) 55%, #6c7279);
+  border-radius: var(--radio-pill);
+}
+
+/* Mangas: donde van los discos */
+.barra__manga {
+  position: absolute; top: 0; bottom: 0;
+  display: flex; align-items: center;
+  gap: clamp(2px, 0.4vw, 5px);            /* Separación mínima entre discos */
+}
+.barra__manga--der { right: 6%; flex-direction: row; }        /* Del centro hacia afuera */
+.barra__manga--izq { left: 6%; flex-direction: row-reverse; } /* Espejo */
+
+/* Collarín: tope que sujeta los discos */
+.barra__manga::before {
+  content: "";
+  width: clamp(10px, 1.4vw, 18px);
+  height: clamp(36px, 5vw, 56px);
+  background: linear-gradient(to right, #c9ced3, var(--c-acero));
+  border-radius: 3px;
+}
+
+/* --- Disco (vista lateral) --- */
+.disco {
+  position: relative;
+  height: calc(var(--alto-disco) * var(--escala, 1)); /* --escala la define barra.js */
+  width: clamp(22px, 3.4vw, 46px);
+  border-radius: 7px;
+  background: var(--color);
+  /* Relieve: borde exterior más oscuro y brillo lateral */
+  box-shadow:
+    inset 3px 0 0 color-mix(in srgb, #fff 22%, transparent),
+    inset -4px 0 0 color-mix(in srgb, #000 22%, transparent);
+  color: var(--tinta, #fff);
+  /* Texto en vertical, como la etiqueta impresa en el disco */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);              /* Se lee de abajo hacia arriba */
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(0.7rem, 1.15vw, 1rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: grid; place-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  /* Animación de entrada */
+  transition:
+    translate 700ms var(--curva-golpe) calc(var(--i) * 140ms + 200ms),
+    opacity 300ms linear calc(var(--i) * 140ms + 200ms),
+    filter var(--dur);
+}
+/* Disco interactivo: botón */
+button.disco:hover { filter: brightness(1.12); }
+button.disco:focus-visible { outline-offset: 4px; transform: rotate(180deg); }
+
+/* Antes de cargar: discos fuera de la barra (sin JS se ven en su sitio) */
+.barra:not(.esta-cargada) .barra__manga--der .disco { translate: 40vw 0; opacity: 0; }
+.barra:not(.esta-cargada) .barra__manga--izq .disco { translate: -40vw 0; opacity: 0; }
+
+/* Leyenda bajo la barra */
+.barra__leyenda {
+  position: absolute; bottom: calc(-1 * var(--e-6)); left: 0; right: 0;
+  text-align: right;
+  font-size: var(--t-sm);
+  color: var(--c-tinta-suave);
+}
+.hero .barra { margin-bottom: var(--e-8); } /* Espacio para la leyenda */
+
+/* Móvil: solo la manga derecha, la barra entra desde la izquierda */
+@media (max-width: 40rem) {
+  .barra__manga--izq { display: none; }
+  .barra__manga--der { right: var(--gutter); }
+  .barra__leyenda { text-align: left; }
+}

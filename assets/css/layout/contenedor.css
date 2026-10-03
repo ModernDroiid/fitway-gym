@@ -1,0 +1,12 @@
+/* =============================================================
+   contenedor.css — Ancho máximo y márgenes laterales.
+   ============================================================= */
+.contenedor {
+  width: 100%;                     /* Ocupa todo en pantallas pequeñas */
+  max-width: var(--ancho-max);     /* Se limita en pantallas grandes */
+  margin-inline: auto;             /* Centrado horizontal */
+  padding-inline: var(--gutter);   /* Margen lateral fluido */
+}
+
+/* Variante para bloques de lectura (preguntas) */
+.contenedor--texto { max-width: calc(var(--ancho-texto) + 2 * var(--gutter) + 8rem); }

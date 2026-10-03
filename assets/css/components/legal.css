@@ -1,0 +1,74 @@
+/* =============================================================
+   legal.css — Páginas legales, enlaces legales del pie y datos pendientes.
+   ============================================================= */
+
+/* Dato legal sin completar: imposible de pasar por alto */
+.es-pendiente {
+  background: color-mix(in srgb, var(--disco-amarillo) 35%, transparent);
+  outline: 1px dashed var(--disco-amarillo);
+  padding-inline: 2px;
+}
+
+/* --- Enlaces legales del pie --- */
+.pie__legal-nav ul { display: flex; flex-wrap: wrap; gap: var(--e-2) var(--e-5); }
+.pie__legal-nav a,
+.pie__legal-nav button {
+  font-size: var(--t-sm);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--c-tinta-suave);
+  min-height: 32px;                              /* Objetivo táctil razonable en línea */
+}
+.pie__legal-nav a:hover,
+.pie__legal-nav button:hover { color: var(--c-tinta); }
+
+/* Pie de páginas legales: solo la franja legal, sin doble borde */
+.pie > .pie__legal:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+
+/* --- Página legal --- */
+.legal-cabecera .cabecera__interior { justify-content: space-between; }
+.legal-cabecera__volver { font-weight: 600; font-size: var(--t-sm); text-underline-offset: 3px; }
+
+.legal { padding-block: var(--e-7) var(--e-8); }
+.legal__titulo { font-size: var(--t-2xl); margin-bottom: var(--e-3); }
+.legal__meta { color: var(--c-tinta-suave); font-size: var(--t-sm); margin-bottom: var(--e-6); }
+
+/* Índice de contenido */
+.legal__indice {
+  padding: var(--e-4) var(--e-5);
+  border-left: 4px solid var(--marca-azul);
+  background: var(--c-superficie);
+  margin-bottom: var(--e-6);
+}
+.legal__indice h2 { font-size: var(--t-md); margin-bottom: var(--e-2); }
+.legal__indice ol { padding-left: var(--e-5); display: grid; gap: var(--e-1); }
+
+/* Texto del documento */
+.legal__cuerpo { max-width: var(--ancho-texto); }
+.legal__cuerpo h2 {
+  font-size: var(--t-lg);
+  margin-top: var(--e-7);
+  margin-bottom: var(--e-3);
+  scroll-margin-top: calc(var(--alto-cabecera) + var(--e-4));
+}
+.legal__cuerpo p,
+.legal__cuerpo ul,
+.legal__cuerpo ol { margin-bottom: var(--e-4); }
+.legal__cuerpo ul, .legal__cuerpo ol { padding-left: var(--e-5); }
+.legal__cuerpo li + li { margin-top: var(--e-1); }
+.legal__cuerpo a { text-underline-offset: 3px; }
+
+/* Tabla (cookies): con scroll propio en móvil, nunca de la página */
+.legal__tabla { overflow-x: auto; margin-bottom: var(--e-5); }
+.legal__tabla table { width: 100%; border-collapse: collapse; font-size: var(--t-sm); min-width: 34rem; }
+.legal__tabla th, .legal__tabla td { text-align: left; padding: var(--e-2) var(--e-3); border-bottom: 1px solid var(--c-linea); vertical-align: top; }
+.legal__tabla th { font-weight: 700; border-bottom: 2px solid var(--c-tinta); }
+.legal__tabla code { font-size: 0.95em; }
+
+/* Recuadro de aviso dentro del documento */
+.legal__nota {
+  padding: var(--e-4);
+  border-radius: var(--radio-m);
+  background: var(--c-superficie);
+  border: 1px solid var(--c-linea);
+}

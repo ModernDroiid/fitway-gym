@@ -1,0 +1,88 @@
+/* =============================================================
+   cabecera.css — Barra superior fija, logo y navegación.
+   ============================================================= */
+.cabecera {
+  position: sticky;                /* Se queda arriba al hacer scroll */
+  top: 0;
+  z-index: 50;                     /* Por encima del contenido */
+  background: var(--c-fondo);
+  border-bottom: 1px solid transparent; /* Borde que aparece al bajar */
+  transition: border-color var(--dur) var(--curva);
+}
+/* Clase que agrega nav.js cuando el usuario ya bajó */
+.cabecera.es-desplazada { border-bottom-color: var(--c-linea); }
+
+.cabecera__interior {
+  display: flex;                   /* Logo a la izquierda, menú a la derecha */
+  align-items: center;
+  justify-content: space-between;
+  height: var(--alto-cabecera);
+}
+
+/* --- Logo --- */
+.logo { display: inline-flex; align-items: center; }
+/* Logo oficial: el alto manda, el ancho sale de la proporción */
+.logo__img { height: 4.25rem; width: auto; margin-block: -0.25rem; } /* Margen negativo: el logo trae aire propio */
+.logo__img--pie { height: 4.5rem; }   /* Más grande en el pie */
+
+/* --- Navegación (escritorio) --- */
+.nav { display: flex; align-items: center; gap: var(--e-5); }
+.nav__lista { display: flex; gap: var(--e-5); }
+.nav__enlace {
+  font-weight: 600;
+  font-size: var(--t-sm);
+  text-decoration: none;
+  padding-block: var(--e-2);
+  /* Subrayado que crece al pasar el mouse */
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  transition: background-size var(--dur) var(--curva);
+}
+.nav__enlace:hover { background-size: 100% 2px; }
+
+/* --- Botón hamburguesa (oculto en escritorio) --- */
+.menu-boton { display: none; width: 44px; height: 44px; position: relative; } /* 44px: área táctil mínima */
+.menu-boton__linea,
+.menu-boton__linea::before,
+.menu-boton__linea::after {
+  position: absolute; left: 10px; width: 24px; height: 2px;
+  background: var(--c-tinta); content: "";
+  transition: transform var(--dur) var(--curva), opacity var(--dur);
+}
+.menu-boton__linea { top: 21px; }            /* Línea central */
+.menu-boton__linea::before { left: 0; top: -7px; } /* Línea superior */
+.menu-boton__linea::after { left: 0; top: 7px; }   /* Línea inferior */
+/* Abierto: se convierte en X */
+.menu-boton[aria-expanded="true"] .menu-boton__linea { background: transparent; }
+.menu-boton[aria-expanded="true"] .menu-boton__linea::before { transform: translateY(7px) rotate(45deg); }
+.menu-boton[aria-expanded="true"] .menu-boton__linea::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Móvil: menú desplegable --- */
+@media (max-width: 52rem) {
+  .menu-boton { display: block; }            /* Muestra hamburguesa */
+  .nav {
+    position: absolute; left: 0; right: 0;
+    top: var(--alto-cabecera);               /* Justo debajo de la barra */
+    flex-direction: column; align-items: stretch;
+    gap: var(--e-4);
+    padding: var(--e-5) var(--gutter) var(--e-6);
+    background: var(--c-fondo);
+    border-bottom: 1px solid var(--c-linea);
+    /* Oculto por defecto con transición */
+    visibility: hidden; opacity: 0; transform: translateY(-8px);
+    transition: opacity var(--dur) var(--curva), transform var(--dur) var(--curva), visibility 0s linear var(--dur);
+  }
+  /* Visible cuando nav.js agrega la clase */
+  .nav.esta-abierto {
+    visibility: visible; opacity: 1; transform: none;
+    transition-delay: 0s;
+  }
+  .nav__lista { flex-direction: column; gap: 0; }
+  .nav__enlace {
+    display: block;
+    font-family: var(--f-display); font-size: var(--t-lg); font-weight: 800;
+    text-transform: uppercase;
+    padding-block: var(--e-3);
+    border-bottom: 1px solid var(--c-linea);
+    background: none;                         /* Sin subrayado animado en móvil */
+  }
+}

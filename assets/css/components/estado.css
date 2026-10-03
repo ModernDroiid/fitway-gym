@@ -1,0 +1,29 @@
+/* =============================================================
+   estado.css — Indicador "Abierto ahora / Cerrado".
+   ============================================================= */
+.estado {
+  display: inline-flex; align-items: center; gap: var(--e-2);
+  padding: var(--e-1) var(--e-3);
+  border: 1px solid var(--c-linea);
+  border-radius: var(--radio-pill);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  background: var(--c-superficie);
+}
+
+/* Punto de color: gris por defecto (cerrado) */
+.estado__punto {
+  width: 0.625rem; height: 0.625rem;
+  border-radius: 50%;
+  background: var(--c-tinta-suave);
+}
+
+/* Abierto: punto verde con un pulso suave (único movimiento continuo del sitio) */
+.estado.es-abierto .estado__punto {
+  background: var(--c-ok);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-ok) 60%, transparent);
+  animation: pulso 2.4s ease-out infinite;
+}
+@keyframes pulso {
+  to { box-shadow: 0 0 0 8px transparent; } /* El halo se expande y desaparece */
+}

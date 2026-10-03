@@ -1,0 +1,22 @@
+/* =============================================================
+   tipografia.css — Titulares y texto.
+   ============================================================= */
+
+/* Titulares: fuente condensada tipo rótulo, en mayúsculas por diseño */
+h1, h2, h3 {
+  font-family: var(--f-display);
+  font-weight: 800;
+  line-height: 0.95;           /* Interlineado apretado: se lee como bloque */
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;          /* Reparte palabras entre líneas */
+}
+
+/* h3 más pequeños, con algo más de aire */
+h3 { line-height: 1.05; }
+
+/* Párrafos: evita palabras huérfanas al final */
+p { text-wrap: pretty; }
+
+/* Números alineados en tablas/horarios */
+.num { font-variant-numeric: tabular-nums; }

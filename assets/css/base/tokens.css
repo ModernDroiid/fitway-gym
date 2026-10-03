@@ -1,0 +1,94 @@
+/* =============================================================
+   tokens.css — Variables de diseño (fuente única de verdad).
+   Cambia aquí un color o tamaño y se actualiza en todo el sitio.
+   ============================================================= */
+:root {
+  /* --- Color base: concreto (fondo) y caucho (tinta) del gimnasio --- */
+  --c-fondo: #E4E6E2;            /* Fondo general: gris concreto */
+  --c-superficie: #F2F3F0;       /* Paneles que se elevan sobre el fondo */
+  --c-tinta: #1A1C21;            /* Texto principal: caucho de piso */
+  --c-tinta-suave: #4A4F58;      /* Texto secundario (contraste AA) */
+  --c-linea: #C3C7C1;            /* Bordes y divisores */
+  --c-acero: #9BA1A8;            /* Metal de la barra */
+
+  /* --- Marca: los tres azules del corredor del logo --- */
+  --marca-marino: #07205C;       /* Azul oscuro del logo */
+  --marca-azul: #0597D5;         /* Azul medio del logo */
+  --marca-cian: #04BAE0;         /* Cian del logo */
+
+  /* --- Discos olímpicos: cada color identifica una sede --- */
+  --disco-rojo: #C8102E;         /* Tres Esquinas */
+  --disco-azul: var(--marca-azul); /* Bosa San José (azul de la marca) */
+  --disco-amarillo: #F2BE1A;     /* Santo Domingo */
+  --disco-verde: #1E8449;        /* San Cristóbal Sur */
+
+  /* --- Color funcional --- */
+  --c-accion: var(--marca-marino); /* Botones principales: azul marino de marca */
+  --c-accion-hover: #0F3A94;     /* Más claro al pasar el mouse (blanco sigue en AA) */
+  --c-sobre-accion: #FFFFFF;     /* Texto encima del botón */
+  --c-ok: #1E8449;               /* Abierto / éxito */
+  --c-error: #B3261E;            /* Errores de formulario */
+  --c-foco: var(--marca-azul);   /* Anillo de foco del teclado */
+
+  /* --- Banda oscura (sección de primer día): azul marino de marca --- */
+  --c-banda: var(--marca-marino); /* Fondo de la banda */
+  --c-banda-texto: #F1F4FA;      /* Texto sobre la banda */
+  --c-banda-suave: #B9C6E4;      /* Texto secundario sobre la banda */
+
+  /* --- Tipografía --- */
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif; /* Titulares tipo rótulo */
+  --f-texto: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif; /* Lectura */
+
+  /* --- Escala tipográfica (razón ~1.25, fluida en títulos) --- */
+  --t-xs: 0.8125rem;                        /* Notas */
+  --t-sm: 0.9375rem;                        /* Ayudas, etiquetas */
+  --t-base: 1.0625rem;                      /* Párrafos (17px) */
+  --t-md: 1.25rem;                          /* Subtítulos */
+  --t-lg: 1.625rem;                         /* Títulos de tarjeta */
+  --t-xl: clamp(2rem, 4vw, 2.75rem);        /* Nombres de sede */
+  --t-2xl: clamp(2.75rem, 6vw, 4.5rem);     /* Títulos de sección */
+  --t-hero: clamp(3.5rem, 11vw, 9.5rem);    /* Titular del hero */
+
+  /* --- Espaciado (múltiplos de 4px) --- */
+  --e-1: 0.25rem;  /* 4px */
+  --e-2: 0.5rem;   /* 8px */
+  --e-3: 0.75rem;  /* 12px */
+  --e-4: 1rem;     /* 16px */
+  --e-5: 1.5rem;   /* 24px */
+  --e-6: 2rem;     /* 32px */
+  --e-7: 3rem;     /* 48px */
+  --e-8: 5rem;     /* 80px */
+
+  /* --- Medidas de layout --- */
+  --ancho-max: 76rem;      /* Ancho máximo del contenido */
+  --ancho-texto: 40rem;    /* Línea legible (< 80 caracteres) */
+  --gutter: clamp(1rem, 4vw, 2.5rem); /* Margen lateral, 16px mínimo en móvil */
+  --alto-cabecera: 4.75rem; /* Alto de la barra superior (cabe el logo legible) */
+
+  /* --- Radios: distintos según jerarquía --- */
+  --radio-s: 4px;          /* Campos */
+  --radio-m: 8px;          /* Paneles */
+  --radio-pill: 999px;     /* Botones y chips */
+
+  /* --- Movimiento --- */
+  --dur: 180ms;                               /* Duración estándar */
+  --curva: cubic-bezier(0.2, 0.7, 0.2, 1);    /* Salida suave */
+  --curva-golpe: cubic-bezier(0.3, 1.35, 0.5, 1); /* Rebote del disco al encajar */
+}
+
+/* --- Modo oscuro: respeta la preferencia del sistema --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-fondo: #16181C;          /* Fondo oscuro */
+    --c-superficie: #1F2228;     /* Paneles oscuros */
+    --c-tinta: #ECEDEA;          /* Texto claro */
+    --c-tinta-suave: #A9AEB6;    /* Texto secundario claro */
+    --c-linea: #343841;          /* Bordes sutiles */
+    --c-acero: #6E747C;          /* Metal más apagado */
+    --c-accion: var(--marca-cian);    /* Sobre oscuro, el cian de marca resalta más que el marino */
+    --c-accion-hover: #3FD0EE;        /* Cian más claro al pasar el mouse */
+    --c-sobre-accion: var(--marca-marino); /* Texto marino sobre cian (contraste AA) */
+    --c-foco: var(--marca-cian);      /* Foco visible sobre oscuro */
+    --c-banda: #0A1A44;               /* Marino más profundo para separarse del fondo */
+  }
+}

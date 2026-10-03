@@ -1,0 +1,39 @@
+/* =============================================================
+   primer-dia.css — Sección de día gratis: pasos y desafíos.
+   ============================================================= */
+
+/* Dos columnas en escritorio: info | formulario */
+.primer-dia { display: grid; gap: var(--e-7); }
+@media (min-width: 60rem) { .primer-dia { grid-template-columns: 1fr minmax(0, 28rem); align-items: start; } }
+
+.primer-dia__info .seccion__intro { margin-block: var(--e-4) var(--e-6); }
+
+/* Pasos numerados con contador CSS (es una secuencia real) */
+.pasos { counter-reset: paso; display: grid; gap: var(--e-5); }
+.pasos__item {
+  counter-increment: paso;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  column-gap: var(--e-4);
+  color: var(--c-banda-suave);
+}
+/* Número grande en tipografía display */
+.pasos__item::before {
+  content: counter(paso);
+  grid-row: span 2;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 0.9;
+  color: var(--disco-amarillo);
+}
+.pasos__titulo { font-size: var(--t-lg); color: var(--c-banda-texto); }
+
+/* Bloque de desafíos internos */
+.desafio {
+  margin-top: var(--e-7);
+  padding-left: var(--e-4);
+  border-left: 4px solid var(--disco-verde);
+  color: var(--c-banda-suave);
+}
+.desafio__titulo { font-size: var(--t-md); color: var(--c-banda-texto); margin-bottom: var(--e-1); }

@@ -1,0 +1,72 @@
+/* =============================================================
+   horario.css — Línea de tiempo de horarios (4 a.m. a 11 p.m.).
+   ============================================================= */
+.horario { display: grid; gap: var(--e-2); }
+
+/* Fila: etiqueta | pista con barra */
+.horario__fila {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr;
+  align-items: center;
+  gap: var(--e-4);
+  padding: var(--e-3) var(--e-4);
+  border-radius: var(--radio-m);
+}
+/* Móvil: etiqueta arriba, pista abajo */
+@media (max-width: 40rem) { .horario__fila { grid-template-columns: 1fr; gap: var(--e-2); } }
+
+/* Fila de hoy: resaltada */
+.horario__fila.es-hoy { background: var(--c-fondo); outline: 2px solid var(--c-tinta); }
+
+.horario__dia { font-weight: 700; }
+.horario__hoy {                                   /* Etiqueta "Hoy" */
+  margin-left: var(--e-2);
+  font-size: var(--t-xs);
+  padding: 1px var(--e-2);
+  border-radius: var(--radio-pill);
+  background: var(--c-tinta); color: var(--c-fondo);
+}
+.horario__horas { display: block; color: var(--c-tinta-suave); font-size: var(--t-sm); }
+
+/* Pista: representa el día de 4 a.m. a 11 p.m. */
+.horario__pista {
+  position: relative;
+  height: 2.25rem;
+  border-radius: var(--radio-s);
+  /* Marcas cada 3 horas (línea vertical repetida) */
+  background:
+    repeating-linear-gradient(to right, var(--c-linea) 0 1px, transparent 1px calc(100% / 19 * 3)) calc(100% / 19 * 2) 0 / 100% 100% no-repeat,
+    color-mix(in srgb, var(--c-linea) 35%, transparent);
+}
+/* Barra de apertura: left/width las define horario.js */
+.horario__abierto {
+  position: absolute; top: 4px; bottom: 4px;
+  border-radius: 3px;
+  background: var(--c-tinta);
+}
+.es-hoy .horario__abierto { background: var(--c-accion); }
+
+/* Marcador de "ahora" */
+.horario__ahora {
+  position: absolute; top: -6px; bottom: -6px;
+  width: 2px;
+  background: var(--c-ok);
+}
+.horario__ahora::after {                          /* Etiqueta "Ahora" */
+  content: "Ahora";
+  position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+  font-size: var(--t-xs); font-weight: 700; color: var(--c-ok);
+}
+
+/* Regla inferior con las horas */
+.horario__regla {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr;
+  gap: var(--e-4);
+  padding-inline: var(--e-4);
+  font-size: var(--t-xs);
+  color: var(--c-tinta-suave);
+}
+.horario__marcas { position: relative; height: 1.25rem; }
+.horario__marcas span { position: absolute; transform: translateX(-50%); }
+@media (max-width: 40rem) { .horario__regla { grid-template-columns: 1fr; } .horario__regla > :first-child { display: none; } }

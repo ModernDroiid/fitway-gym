@@ -1,0 +1,54 @@
+/* =============================================================
+   cookies.css — Aviso de cookies y panel de configuración.
+   ============================================================= */
+
+/* Aviso fijo abajo; no bloquea la página */
+.cookies {
+  position: fixed;
+  left: var(--gutter); right: var(--gutter); bottom: var(--e-4);
+  z-index: 60;                                  /* Encima de la cabecera */
+  max-width: 44rem;
+  margin-inline: auto;
+  display: grid; gap: var(--e-3);
+  padding: var(--e-4) var(--e-5);
+  background: var(--c-superficie);
+  border: 1px solid var(--c-linea);
+  border-radius: var(--radio-m);
+  box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.35); /* Separación clara del contenido */
+  font-size: var(--t-sm);
+}
+.cookies__texto a { font-weight: 600; text-underline-offset: 3px; }
+.cookies__acciones { display: flex; flex-wrap: wrap; gap: var(--e-2); align-items: center; }
+/* "Configurar": acción terciaria en forma de enlace */
+.cookies__configurar {
+  min-height: 40px; padding-inline: var(--e-2);
+  font-weight: 600; font-size: var(--t-sm);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* Panel modal nativo */
+.cookies-panel {
+  width: min(32rem, calc(100% - 2 * var(--gutter)));
+  margin: auto;                                 /* Centrado: el reseteo global lo había quitado */
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio-m);
+  background: var(--c-superficie);
+  color: var(--c-tinta);
+}
+.cookies-panel::backdrop { background: rgb(7 32 92 / 0.55); } /* Velo azul marino de marca */
+.cookies-panel__form { display: grid; gap: var(--e-4); padding: var(--e-6); }
+.cookies-panel__titulo { font-size: var(--t-lg); }
+.cookies-panel__acciones { display: flex; justify-content: flex-end; gap: var(--e-2); }
+
+/* Fila con casilla + explicación */
+.interruptor {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--e-3);
+  align-items: start;
+  padding-block: var(--e-3);
+  border-top: 1px solid var(--c-linea);
+  font-size: var(--t-sm);
+  color: var(--c-tinta-suave);
+}
+.interruptor strong { color: var(--c-tinta); }
+.interruptor input { width: 1.25rem; height: 1.25rem; margin-top: 2px; accent-color: var(--c-accion); }

@@ -1,0 +1,28 @@
+/* =============================================================
+   main.css — Punto de entrada de estilos.
+   El orden importa: primero variables, luego base, layout y componentes.
+   En producción conviene unir estos archivos en uno (menos peticiones).
+   ============================================================= */
+
+/* 1. Base: variables, reseteo y tipografía */
+@import url("base/tokens.css");
+@import url("base/reset.css");
+@import url("base/tipografia.css");
+
+/* 2. Layout: estructura general de la página */
+@import url("layout/contenedor.css");
+@import url("layout/cabecera.css");
+@import url("layout/secciones.css");
+@import url("layout/pie.css");
+
+/* 3. Componentes: piezas reutilizables */
+@import url("components/botones.css");
+@import url("components/estado.css");
+@import url("components/barra.css");
+@import url("components/sedes.css");
+@import url("components/horario.css");
+@import url("components/primer-dia.css");
+@import url("components/formulario.css");
+@import url("components/faq.css");
+@import url("components/cookies.css");
+@import url("components/legal.css");

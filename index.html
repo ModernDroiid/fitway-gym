@@ -1,0 +1,323 @@
+<!doctype html>
+<!-- Idioma español de Colombia: mejora lectores de pantalla y SEO -->
+<html lang="es-CO">
+<head>
+  <!-- Codificación de caracteres (tildes, ñ) -->
+  <meta charset="utf-8">
+  <!-- Escala correcta en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña y en Google -->
+  <title>Fitway Gym | Gimnasios en el sur de Bogotá</title>
+  <!-- Descripción para buscadores y vistas previas -->
+  <meta name="description" content="Fitway Gym: 4 sedes en Tres Esquinas, Bosa San José, Santo Domingo y San Cristóbal Sur. Abierto de lunes a domingo. Tu primer día es gratis.">
+  <!-- Color de la barra del navegador en móviles -->
+  <meta name="theme-color" content="#07205C">
+  <!-- Open Graph: vista previa al compartir en Facebook/WhatsApp -->
+  <meta property="og:title" content="Fitway Gym | Entrena en el sur, cerca de casa">
+  <meta property="og:description" content="4 sedes en el sur de Bogotá. Tu primer día es gratis.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/logo-fitway.png">
+  <!-- Ícono de la pestaña: el corredor del logo -->
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <!-- Ícono al guardar en la pantalla de inicio (iPhone) -->
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <!-- Conexión anticipada a Google Fonts para cargar más rápido -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fuentes: Big Shoulders Display (titulares) + Instrument Sans (texto) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <!-- Hoja de estilos principal (importa todas las demás) -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Seguridad: si algún recurso se pide por http://, el navegador lo pide por https:// -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <!-- Punto de entrada JS como módulo (defer implícito) -->
+  <script type="module" src="assets/js/main.js"></script>
+  <!--
+    Analítica (opcional): se escribe con type="text/plain" para que NO se ejecute
+    hasta que el usuario acepte las cookies analíticas (lo activa services/consentimiento.js).
+    <script type="text/plain" data-consentimiento="analiticas" async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  -->
+</head>
+<body>
+  <!-- Enlace para saltar al contenido (accesibilidad con teclado) -->
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <header class="cabecera" data-cabecera>
+    <div class="cabecera__interior contenedor">
+      <!-- Logo: enlace al inicio -->
+      <a class="logo" href="#inicio" aria-label="Fitway Gym, ir al inicio">
+        <!-- picture: en modo oscuro usa la versión con el texto blanco -->
+        <picture>
+          <source srcset="assets/img/logo-fitway-claro.png" media="(prefers-color-scheme: dark)">
+          <!-- alt vacío: el nombre ya está en el aria-label del enlace; width/height evitan saltos al cargar -->
+          <img class="logo__img" src="assets/img/logo-fitway.png" alt="" width="640" height="372">
+        </picture>
+      </a>
+
+      <!-- Botón hamburguesa (solo visible en móvil) -->
+      <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-boton>
+        <!-- Texto accesible del botón -->
+        <span class="sr-only">Abrir menú</span>
+        <!-- Tres líneas del ícono -->
+        <span class="menu-boton__linea" aria-hidden="true"></span>
+      </button>
+
+      <!-- Navegación principal -->
+      <nav class="nav" id="menu-principal" aria-label="Principal" data-menu>
+        <ul class="nav__lista">
+          <li><a class="nav__enlace" href="#sedes">Sedes</a></li>
+          <li><a class="nav__enlace" href="#horarios">Horarios</a></li>
+          <li><a class="nav__enlace" href="#primer-dia">Primer día</a></li>
+          <li><a class="nav__enlace" href="#preguntas">Preguntas</a></li>
+        </ul>
+        <!-- Acción principal siempre visible -->
+        <a class="boton boton--primario boton--compacto" href="#dia-gratis">Reclamar día gratis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="contenedor hero__grid">
+        <!-- Estado en vivo: abierto/cerrado según hora de Bogotá (lo llena estado.js) -->
+        <p class="estado" data-estado aria-live="polite">
+          <span class="estado__punto" aria-hidden="true"></span>
+          <span data-estado-texto>Consultando horario…</span>
+        </p>
+        <!-- Titular principal -->
+        <h1 class="hero__titulo" id="hero-titulo">Entrena en el sur, cerca de casa</h1>
+        <!-- Texto de apoyo: en escritorio va a la derecha del titular -->
+        <div class="hero__texto">
+          <!-- Bajada: qué es y dónde está -->
+          <p class="hero__bajada">Cuatro sedes en Ciudad Bolívar, Bosa y San Cristóbal, a minutos de tu barrio y de Soacha. Máquinas completas, clases dirigidas y un ambiente que te empuja a volver.</p>
+          <!-- Llamados a la acción -->
+          <div class="hero__acciones">
+            <a class="boton boton--primario" href="#dia-gratis">Reclamar mi primer día gratis</a>
+            <a class="boton boton--secundario" href="#sedes">Ver sedes</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra olímpica: cada disco es una sede (la llena barra.js) -->
+      <figure class="barra" data-barra aria-labelledby="barra-leyenda">
+        <!-- Eje metálico de la barra -->
+        <div class="barra__eje" aria-hidden="true"></div>
+        <!-- Manga izquierda: espejo decorativo -->
+        <div class="barra__manga barra__manga--izq" data-manga="izq" aria-hidden="true"></div>
+        <!-- Manga derecha: discos interactivos -->
+        <div class="barra__manga barra__manga--der" data-manga="der"></div>
+        <!-- Leyenda que explica la interacción -->
+        <figcaption class="barra__leyenda contenedor" id="barra-leyenda">Cada disco es una sede. Tócalo para verla.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ===================== SEDES ===================== -->
+    <section class="seccion" id="sedes" aria-labelledby="sedes-titulo">
+      <div class="contenedor">
+        <!-- Cabecera de sección -->
+        <div class="seccion__cabeza">
+          <h2 class="seccion__titulo" id="sedes-titulo">Nuestras sedes</h2>
+          <p class="seccion__intro">Elige qué quieres entrenar y te mostramos la sede que más te sirve.</p>
+        </div>
+
+        <!-- Filtros por tipo de entrenamiento (los crea sedes.js) -->
+        <div class="filtros" role="group" aria-label="Filtrar sedes por entrenamiento" data-filtros></div>
+        <!-- Resumen del filtro para lectores de pantalla y usuarios -->
+        <p class="filtros__resumen" data-filtros-resumen aria-live="polite"></p>
+
+        <!-- Lista de sedes (la llena sedes.js) -->
+        <ul class="sedes" data-sedes></ul>
+      </div>
+    </section>
+
+    <!-- ===================== HORARIOS ===================== -->
+    <section class="seccion seccion--superficie" id="horarios" aria-labelledby="horarios-titulo">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <h2 class="seccion__titulo" id="horarios-titulo">Horarios</h2>
+          <p class="seccion__intro">El mismo horario en todas las sedes. Los festivos abrimos como un domingo.</p>
+        </div>
+        <!-- Línea de tiempo semanal (la llena horario.js) -->
+        <div class="horario" data-horario></div>
+      </div>
+    </section>
+
+    <!-- ===================== PRIMER DÍA GRATIS ===================== -->
+    <section class="seccion seccion--banda" id="primer-dia" aria-labelledby="primer-dia-titulo">
+      <div class="contenedor primer-dia">
+        <!-- Columna izquierda: qué pasa ese día -->
+        <div class="primer-dia__info">
+          <h2 class="seccion__titulo" id="primer-dia-titulo">Tu primer día es gratis</h2>
+          <p class="seccion__intro">Si eres nuevo en Fitway, ven a probar antes de inscribirte. Así funciona:</p>
+          <!-- Lista ordenada: es un proceso real paso a paso -->
+          <ol class="pasos">
+            <li class="pasos__item">
+              <h3 class="pasos__titulo">Deja tus datos</h3>
+              <p>Elige la sede y el día que quieres ir.</p>
+            </li>
+            <li class="pasos__item">
+              <h3 class="pasos__titulo">Llega a recepción</h3>
+              <p>Te mostramos las zonas y las máquinas de la sede.</p>
+            </li>
+            <li class="pasos__item">
+              <h3 class="pasos__titulo">Entrena todo el día</h3>
+              <p>Usa el gimnasio y entra a las clases dirigidas que haya ese día.</p>
+            </li>
+          </ol>
+          <!-- Bloque sobre los desafíos internos -->
+          <aside class="desafio" aria-label="Desafíos internos">
+            <h3 class="desafio__titulo">¿Ya entrenas con nosotros?</h3>
+            <p>Participa en los desafíos internos de acondicionamiento físico. Pregunta en recepción por el próximo.</p>
+          </aside>
+        </div>
+
+        <!-- Columna derecha: formulario -->
+        <div class="primer-dia__form" id="dia-gratis">
+          <!-- novalidate: usamos validación propia con mensajes claros -->
+          <form class="form" data-form novalidate aria-labelledby="form-titulo">
+            <h3 class="form__titulo" id="form-titulo">Reclama tu día gratis</h3>
+
+            <!-- Campo: nombre -->
+            <div class="campo">
+              <label class="campo__etiqueta" for="f-nombre">Nombre</label>
+              <input class="campo__control" id="f-nombre" name="nombre" type="text" autocomplete="given-name" required aria-describedby="f-nombre-error">
+              <p class="campo__error" id="f-nombre-error" data-error-de="nombre"></p>
+            </div>
+
+            <!-- Campo: celular (10 dígitos, empieza por 3) -->
+            <div class="campo">
+              <label class="campo__etiqueta" for="f-celular">Celular</label>
+              <input class="campo__control" id="f-celular" name="celular" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required aria-describedby="f-celular-ayuda f-celular-error">
+              <p class="campo__ayuda" id="f-celular-ayuda">Te escribimos para confirmar.</p>
+              <p class="campo__error" id="f-celular-error" data-error-de="celular"></p>
+            </div>
+
+            <!-- Campo: sede (opciones desde datos) -->
+            <div class="campo">
+              <label class="campo__etiqueta" for="f-sede">Sede</label>
+              <select class="campo__control" id="f-sede" name="sede" required aria-describedby="f-sede-error" data-select-sede>
+                <option value="">Elige una sede</option>
+              </select>
+              <p class="campo__error" id="f-sede-error" data-error-de="sede"></p>
+            </div>
+
+            <!-- Campo: fecha (mínimo hoy) -->
+            <div class="campo">
+              <label class="campo__etiqueta" for="f-fecha">¿Qué día vienes?</label>
+              <input class="campo__control" id="f-fecha" name="fecha" type="date" required aria-describedby="f-fecha-ayuda f-fecha-error" data-input-fecha>
+              <!-- Ayuda dinámica: horario del día elegido -->
+              <p class="campo__ayuda" id="f-fecha-ayuda" data-ayuda-fecha aria-live="polite">Elige un día y te decimos el horario.</p>
+              <p class="campo__error" id="f-fecha-error" data-error-de="fecha"></p>
+            </div>
+
+            <!-- Aviso de privacidad corto (Ley 1581 de 2012): quién trata los datos, para qué y qué derechos tienes -->
+            <p class="form__aviso">
+              Fitway Gym usará tus datos para gestionar tu día gratis y contactarte para confirmarlo.
+              Puedes conocer, actualizar, rectificar o pedir que borremos tus datos cuando quieras.
+            </p>
+
+            <!-- Autorización obligatoria: casilla DESMARCADA por defecto -->
+            <div class="campo campo--casilla">
+              <input class="campo__casilla" id="f-autoriza" name="autoriza" type="checkbox" required aria-describedby="f-autoriza-error">
+              <label for="f-autoriza">Autorizo el tratamiento de mis datos según la <a href="legal/privacidad.html" target="_blank" rel="noopener">Política de tratamiento de datos</a>.</label>
+              <p class="campo__error" id="f-autoriza-error" data-error-de="autoriza"></p>
+            </div>
+
+            <!-- Finalidad distinta (publicidad) = autorización aparte y opcional -->
+            <div class="campo campo--casilla">
+              <input class="campo__casilla" id="f-promociones" name="promociones" type="checkbox">
+              <label for="f-promociones">Quiero recibir promociones y desafíos por WhatsApp. Es opcional.</label>
+            </div>
+
+            <!-- Envío -->
+            <button class="boton boton--primario boton--ancho" type="submit" data-form-enviar>Reclamar día gratis</button>
+            <!-- Mensaje de error general del envío -->
+            <p class="form__estado" data-form-estado role="status"></p>
+          </form>
+
+          <!-- Confirmación (oculta hasta enviar) -->
+          <div class="confirmacion" data-confirmacion hidden tabindex="-1">
+            <h3 class="confirmacion__titulo">Día gratis reclamado</h3>
+            <p data-confirmacion-texto></p>
+            <button class="boton boton--secundario" type="button" data-confirmacion-otra>Reclamar para otra persona</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PREGUNTAS ===================== -->
+    <section class="seccion" id="preguntas" aria-labelledby="preguntas-titulo">
+      <div class="contenedor contenedor--texto">
+        <h2 class="seccion__titulo" id="preguntas-titulo">Preguntas frecuentes</h2>
+        <!-- details/summary: acordeón nativo, accesible sin JS; name="faq" abre uno a la vez -->
+        <div class="faq">
+          <details class="faq__item" name="faq">
+            <summary class="faq__pregunta">¿El primer día gratis aplica en todas las sedes?</summary>
+            <p class="faq__respuesta">Es una promoción para nuevos miembros. Las promociones cambian, así que confirma en tu sede antes de ir.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary class="faq__pregunta">¿Abren los festivos?</summary>
+            <p class="faq__respuesta">Sí. Domingos y festivos abrimos de 7:00 a.m. a 4:00 p.m.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary class="faq__pregunta">¿Qué sede me sirve más?</summary>
+            <p class="faq__respuesta">Para fuerza, Tres Esquinas y Bosa San José. Para clases grupales, Santo Domingo (Zumba en la noche) y San Cristóbal Sur (rumba fitness y funcional).</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary class="faq__pregunta">Vivo en Soacha, ¿me queda cerca?</summary>
+            <p class="faq__respuesta">Sí. Las sedes de Bosa San José y Ciudad Bolívar quedan cerca de los límites con Soacha.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <!-- Marca y comunidad -->
+      <div class="pie__marca">
+        <!-- Logo del pie (misma lógica claro/oscuro que la cabecera) -->
+        <picture>
+          <source srcset="assets/img/logo-fitway-claro.png" media="(prefers-color-scheme: dark)">
+          <img class="logo__img logo__img--pie" src="assets/img/logo-fitway.png" alt="Fitway" width="640" height="372" loading="lazy">
+        </picture>
+        <p>Gimnasios en el sur de Bogotá.</p>
+        <!-- Enlace externo: se abre en otra pestaña de forma segura -->
+        <a class="pie__enlace" href="https://www.facebook.com/search/top?q=Fitway%20Gym" target="_blank" rel="noopener noreferrer">Únete a la comunidad en Facebook</a>
+      </div>
+      <!-- Direcciones (las llena sedes.js) -->
+      <div>
+        <h2 class="pie__titulo">Sedes</h2>
+        <ul class="pie__lista" data-pie-sedes></ul>
+      </div>
+      <!-- Horarios resumidos -->
+      <div>
+        <h2 class="pie__titulo">Horarios</h2>
+        <ul class="pie__lista">
+          <li>Lunes a viernes: 5:00 a.m. a 10:00 p.m.</li>
+          <li>Sábados: 7:00 a.m. a 6:00 p.m.</li>
+          <li>Domingos y festivos: 7:00 a.m. a 4:00 p.m.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie__legal contenedor">
+      <!-- Identificación del titular (Ley 527 de 1999 / Ley 1480 de 2011); datos desde assets/js/data/empresa.js -->
+      <p>© <span data-anio>2026</span> <span data-empresa="razonSocial"></span>. NIT <span data-empresa="nit"></span>. Todos los derechos reservados.</p>
+      <!-- Enlaces legales obligatorios, visibles en todas las páginas -->
+      <nav class="pie__legal-nav" aria-label="Información legal">
+        <ul>
+          <li><a href="legal/aviso-legal.html">Aviso legal</a></li>
+          <li><a href="legal/privacidad.html">Tratamiento de datos personales</a></li>
+          <li><a href="legal/cookies.html">Política de cookies</a></li>
+          <li><a href="legal/terminos.html">Términos y condiciones</a></li>
+          <!-- Reabre el panel de cookies para cambiar la elección -->
+          <li><button type="button" data-abrir-cookies>Configurar cookies</button></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

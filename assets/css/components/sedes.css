@@ -1,0 +1,91 @@
+/* =============================================================
+   sedes.css — Filtros y lista de sedes.
+   ============================================================= */
+
+/* --- Filtros (chips) --- */
+.filtros { display: flex; flex-wrap: wrap; gap: var(--e-2); }
+.chip {
+  min-height: 44px;
+  padding: 0 var(--e-4);
+  border: 1.5px solid var(--c-linea);
+  border-radius: var(--radio-pill);
+  font-weight: 600;
+  font-size: var(--t-sm);
+  transition: background-color var(--dur), color var(--dur), border-color var(--dur);
+}
+.chip:hover { border-color: var(--c-tinta); }
+/* Chip activo (aria-pressed lo marca JS) */
+.chip[aria-pressed="true"] { background: var(--c-tinta); color: var(--c-fondo); border-color: var(--c-tinta); }
+
+.filtros__resumen {
+  margin-block: var(--e-4) var(--e-3);
+  font-size: var(--t-sm);
+  color: var(--c-tinta-suave);
+}
+
+/* --- Lista --- */
+.sedes { border-top: 2px solid var(--c-tinta); } /* Línea fuerte que abre la lista */
+
+.sede {
+  display: grid;
+  grid-template-columns: auto 1fr;           /* Disco | contenido (móvil) */
+  gap: var(--e-3) var(--e-5);
+  padding-block: var(--e-6);
+  border-bottom: 1px solid var(--c-linea);
+  scroll-margin-top: calc(var(--alto-cabecera) + var(--e-5));
+  transition: background-color 600ms var(--curva);
+}
+/* Escritorio: disco | nombre | detalle | acciones */
+@media (min-width: 60rem) {
+  .sede { grid-template-columns: auto minmax(0, 1.1fr) minmax(0, 1.3fr) auto; align-items: start; }
+}
+/* Resaltado temporal al llegar desde un disco de la barra */
+.sede.es-destacada { background: color-mix(in srgb, var(--color) 12%, transparent); }
+
+/* Disco de frente: identifica la sede por color */
+.sede__disco {
+  width: clamp(3rem, 6vw, 4.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /* Anillos del disco con el agujero central */
+  background:
+    radial-gradient(circle, var(--c-fondo) 0 16%, transparent 17%),
+    radial-gradient(circle, transparent 0 62%, color-mix(in srgb, #000 18%, var(--color)) 63% 66%, transparent 67%),
+    var(--color);
+}
+
+.sede__nombre { font-size: var(--t-xl); }
+.sede__lugar { color: var(--c-tinta-suave); font-weight: 600; margin-top: var(--e-1); }
+.sede__nota {
+  display: inline-block;
+  margin-top: var(--e-3);
+  padding: 2px var(--e-2);
+  border-left: 3px solid var(--color);       /* Marca con el color de la sede */
+  font-size: var(--t-sm);
+  font-weight: 600;
+}
+
+/* Detalle: resumen y zonas */
+.sede__detalle { grid-column: 2; max-width: var(--ancho-texto); }
+@media (min-width: 60rem) { .sede__detalle { grid-column: auto; } }
+.sede__direccion { font-weight: 700; }
+.sede__resumen { color: var(--c-tinta-suave); margin-top: var(--e-1); }
+.sede__zonas {
+  display: flex; flex-wrap: wrap; gap: var(--e-2);
+  margin-top: var(--e-3);
+}
+.sede__zona {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  padding: 2px var(--e-2);
+  border-radius: var(--radio-s);
+  background: var(--c-superficie);
+  border: 1px solid var(--c-linea);
+}
+
+/* Acciones */
+.sede__acciones {
+  grid-column: 2;
+  display: flex; flex-wrap: wrap; gap: var(--e-2);
+}
+@media (min-width: 60rem) { .sede__acciones { grid-column: auto; flex-direction: column; align-items: stretch; } }
